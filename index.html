@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=7, initial-scale=1.0" />
+		<title>tipCalculatorApp</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<div class="logo-container">
+			<img src="./asset/SPLITTER.svg" alt="SPLITTER" />
+		</div>
+		<article>
+			<form>
+				<label>
+					Bill
+					<div class="input-dollars">
+						<img src="./asset/dollar.svg" alt="dollar" />
+						<input type="number" name="text" id="montant" class="montant" min="0"/>
+					</div>
+				</label>
+				<div class="select-tip">
+					Select Tip %
+					<div class="grid-container">
+						<div class="percent-div">5%</div>
+						<div class="percent-div">10%</div>
+						<div class="percent-div">15%</div>
+						<div class="percent-div">25%</div>
+						<div class="percent-div">50%</div>
+						<input
+							type="text"
+							name="custom"
+							id="custom"
+							class="custom"
+							placeholder="Custom"
+						/>
+					</div>
+				</div>
+				<label>
+					Number of People
+					<div class="input-dollars">
+						<img src="./asset/person.svg" alt="person" />
+						<input type="number" name="text" id="people" class="montant" min="0"/>
+					</div>
+				</label>
+			</form>
+			<section>
+				<div class="mony-container">
+					<div class="sect-div-row">
+						<p class="per-person"><span>Tip Amount</span> / person</p>
+						<h2 class="money" id="tip-amount">$0</h2>
+					</div>
+					<div class="sect-div-row">
+						<p class="per-person">
+							<span>Total</span> <br />
+							/ person
+						</p>
+						<h2 class="money" id="total">$0</h2>
+					</div>
+				</div>
+				<button type="button" class="reset" id="reset-btn">RESET</button>
+			</section>
+		</article>
+		<script src="main.js"></script>
+	</body>
+</html>
