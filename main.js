@@ -5,6 +5,7 @@ const tipAmount = document.getElementById("tip-amount");
 const resetBtn = document.getElementById("reset-btn");
 const totalAmount = document.getElementById("total");
 const btnCustom = document.getElementById("custom");
+const form = document.getElementById("form");
 
 function tip(price, percent, people) {
 	let result = (price * (percent / 100)) / people;
@@ -22,14 +23,9 @@ function resetActiveClass() {
 	}
 }
 
-function updateResults(price, tip, numberPeople) {
-	// logique pour calculer et modifier le contenu html
-}
-montantInput.addEventListener("input", ()=> {
-	
-})
-for (const element of percentDiv) {
-	element.addEventListener("click", () => {
+form.addEventListener("input", () => {
+	for (const element of percentDiv) {
+		const pourcentage = parseFloat(element.textContent);
 		if (
 			montantInput.value === "" ||
 			peopleInput.value === "" ||
@@ -39,37 +35,21 @@ for (const element of percentDiv) {
 			totalAmount.textContent = "$0";
 			return;
 		}
-
-		if (element.textContent === "5%") {
-			tipAmount.textContent =
-				"$" + tip(montantInput.value, 5, peopleInput.value);
-			totalAmount.textContent =
-				"$" + total(montantInput.value, 5, peopleInput.value);
-		} else if (element.textContent === "10%") {
-			tipAmount.textContent =
-				"$" + tip(montantInput.value, 10, peopleInput.value);
-			totalAmount.textContent =
-				"$" + total(montantInput.value, 10, peopleInput.value);
-		} else if (element.textContent === "15%") {
-			tipAmount.textContent =
-				"$" + tip(montantInput.value, 15, peopleInput.value);
-			totalAmount.textContent =
-				"$" + total(montantInput.value, 15, peopleInput.value);
-		} else if (element.textContent === "25%") {
-			tipAmount.textContent =
-				"$" + tip(montantInput.value, 25, peopleInput.value);
-			totalAmount.textContent =
-				"$" + total(montantInput.value, 25, peopleInput.value);
-		} else if (element.textContent === "50%") {
-			tipAmount.textContent =
-				"$" + tip(montantInput.value, 50, peopleInput.value);
-			totalAmount.textContent =
-				"$" + total(montantInput.value, 50, peopleInput.value);
+		
+		if (element.classList.contains("active")) {
+            tipAmount.textContent = "$" + tip(montantInput.value, pourcentage, peopleInput.value);
+            totalAmount.textContent = "$" + total(montantInput.value, pourcentage, peopleInput.value);
+            break
+        }
+		for (const element of percentDiv) {
+			element.addEventListener("click", ()=> {
+				resetActiveClass();
+				element.classList.add("active")
+				form.dispatchEvent(new Event("input"));
+			}) 
 		}
-		resetActiveClass();
-		element.classList.add("active");
-	});
-}
+	}
+});
 
 btnCustom.addEventListener("input", () => {
 	if (

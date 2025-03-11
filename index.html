@@ -11,7 +11,7 @@
 			<img src="./asset/SPLITTER.svg" alt="SPLITTER" />
 		</div>
 		<article>
-			<form>
+			<form id="form" onsubmit="return false">
 				<label>
 					Bill
 					<div class="input-dollars">
@@ -22,13 +22,13 @@
 				<div class="select-tip">
 					Select Tip %
 					<div class="grid-container">
-						<div class="percent-div">5%</div>
-						<div class="percent-div">10%</div>
-						<div class="percent-div">15%</div>
-						<div class="percent-div">25%</div>
-						<div class="percent-div">50%</div>
+						<button class="percent-div" type="button">5%</button>
+						<button class="percent-div" type="button">10%</button>
+						<button class="percent-div" type="button">15%</button>
+						<button class="percent-div" type="button">25%</button>
+						<button class="percent-div" type="button">50%</button>
 						<input
-							type="text"
+							type="number"
 							name="custom"
 							id="custom"
 							class="custom"
